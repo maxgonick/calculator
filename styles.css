@@ -1,0 +1,36 @@
+#frame-container {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.flex-container {
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#number-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#operation-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#number-container > button {
+  aspect-ratio: 1/1;
+  min-width: 3rem;
+}
+
+#operation-container > button {
+  aspect-ratio: 1 / 1;
+  min-width: 3rem;
+}
