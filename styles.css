@@ -1,3 +1,9 @@
+@import "/nord.css";
+body {
+  background-color: var(--nord7);
+  margin: 0;
+}
+
 #frame-container {
   display: flex;
   box-sizing: border-box;
@@ -7,30 +13,57 @@
 }
 
 .flex-container {
-  flex-grow: 1;
+  display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.bottom-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--nord5);
+  padding: 0.2rem;
 }
 
 #number-container {
-  flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.2rem;
+  margin-right: 0.2rem;
 }
 
 #operation-container {
-  flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 0.2rem;
 }
 
 #number-container > button {
+  background-color: var(--nord8);
   aspect-ratio: 1/1;
-  min-width: 3rem;
+  width: clamp(3rem, 7vw, 7rem);
+  border: 0;
 }
 
 #operation-container > button {
+  background-color: var(--nord9);
   aspect-ratio: 1 / 1;
   min-width: 3rem;
+  width: clamp(3rem, 7vw, 7rem);
+  border: 0;
+}
+
+#operation-container > .equal {
+  aspect-ratio: 2.0368/1;
+  grid-column: 1/3;
+  width: clamp(6.2rem, (14vw + 0.2rem), 14.2rem);
+  padding: 0;
+}
+
+#result {
+  min-width: 100%;
+  height: clamp(2rem, 12vh, 7rem);
+  background-color: var(--nord6);
 }
