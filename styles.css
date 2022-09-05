@@ -45,6 +45,7 @@ body {
   aspect-ratio: 1/1;
   width: clamp(3rem, 7vw, 7rem);
   border: 0;
+  font-size: 20px;
 }
 
 #operation-container > button {
@@ -53,6 +54,7 @@ body {
   min-width: 3rem;
   width: clamp(3rem, 7vw, 7rem);
   border: 0;
+  font-size: 20px;
 }
 
 #operation-container > .equal {
