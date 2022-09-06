@@ -46,53 +46,82 @@ function switchStatementOperation(input) {
   }
 }
 
+function wordToNumber(stringInput) {
+  switch (stringInput) {
+    case "one":
+      return 1;
+    case "two":
+      return 2;
+    case "three":
+      return 3;
+    case "four":
+      return 4;
+    case "five":
+      return 5;
+    case "six":
+      return 6;
+    case "seven":
+      return 7;
+    case "eight":
+      return 8;
+    case "nine":
+      return 9;
+    case "zero":
+      return 0;
+    case "point":
+      return ".";
+  }
+}
+
 //globals
-let inputOne;
+let inputOne = "";
 let inputOneBool = false;
-let inputTwo;
+let inputTwo = "";
 let inputTwoBool = false;
-let operation;
+let operation = "";
 let operationBool = false;
-let result;
+let result = "";
 
 const numberButtons = document.querySelectorAll("#number-container > button");
 const operationButtons = document.querySelectorAll(
   "#operation-container > button"
 );
-const resultSelector = document.querySelector("#result");
+const resultSelector = document.querySelector(".result");
 
-//Setting up listeners for numbers
-numberButtons.forEach((element) => {
-  element.addEventListener("click", (event) => {
-    if (inputOneBool === false) {
-      inputOne = element.textContent;
-      inputOneBool = true;
-      console.log(`input one is ${inputOne}`);
-      return;
-    } else if (inputOneBool === true && inputTwoBool === false) {
-      inputTwo = element.textContent;
-      inputTwoBool = true;
-      console.log(`input two is ${inputTwo}`);
-      return;
+//Listeners for number input
+numberButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    resultSelector.textContent += wordToNumber(button.className);
+    if (inputOneBool == false) {
+      inputOne = resultSelector.textContent;
     } else {
-      return;
+      inputTwo = resultSelector.textContent;
     }
   });
 });
 
-//Setting up listeners for operations
-operationButtons.forEach((element) => {
-  element.addEventListener("click", (event) => {
-    if (operationBool === false) {
-      switchStatementOperation(element.className);
-      operationBool = true;
-    } else if (operationBool === true) {
+//Listener for Operators
+
+operationButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    if (
+      button.className === "divide" ||
+      button.className === "multiply" ||
+      button.className === "plus" ||
+      button.className === "minus"
+    ) {
+      inputOneBool = true;
+      operation = button.className;
+      resultSelector.textContent = "";
+    } else if (button.className === "equal") {
       result = operate(operation, inputOne, inputTwo);
-      console.log(result);
+      resultSelector.textContent = result;
+    } else if (button.className === "all-clear") {
+      inputOne = "";
+      inputTwo = "";
       inputOneBool = false;
       inputTwoBool = false;
-      resultSelector.textContent = result;
+      resultSelector.textContent = "";
     }
-    return;
   });
 });
