@@ -1,18 +1,18 @@
 function plus(firstInput, secondInput) {
-  return parseInt(firstInput) + parseInt(secondInput);
+  return parseFloat(firstInput) + parseFloat(secondInput);
 }
 
 function minus(firstInput, secondInput) {
-  return parseInt(firstInput) - parseInt(secondInput);
+  return parseFloat(firstInput) - parseFloat(secondInput);
 }
 
 function multiply(firstInput, secondInput) {
-  return parseInt(firstInput) * parseInt(secondInput);
+  return parseFloat(firstInput) * parseFloat(secondInput);
 }
 
 function divide(firstInput, secondInput) {
   if (secondInput == 0) return NaN;
-  else return parseInt(firstInput) / parseInt(secondInput);
+  else return parseFloat(firstInput) / parseFloat(secondInput);
 }
 
 function operate(functionInput, firstInput, secondInput) {
@@ -70,6 +70,8 @@ function wordToNumber(stringInput) {
       return 0;
     case "point":
       return ".";
+    default:
+      return "";
   }
 }
 
@@ -96,7 +98,7 @@ numberButtons.forEach((button) => {
       if (button.className === "sign") {
         if (resultSelector.textContent != "") {
           resultSelector.textContent =
-            parseInt(resultSelector.textContent) * -1;
+            parseFloat(resultSelector.textContent) * -1.0;
           inputOne = resultSelector.textContent;
         }
         return;
@@ -106,12 +108,8 @@ numberButtons.forEach((button) => {
       if (button.className === "sign") {
         if (resultSelector.textContent != "") {
           resultSelector.textContent =
-            parseInt(resultSelector.textContent) * -1;
-          if (inputOneBool === false) {
-            inputOne = resultSelector.textContent;
-          } else {
-            inputTwo = resultSelector.textContent;
-          }
+            parseFloat(resultSelector.textContent) * -1.0;
+          inputTwo = resultSelector.textContent;
         }
         return;
       }
@@ -137,6 +135,7 @@ operationButtons.forEach((button) => {
       result = operate(operation, inputOne, inputTwo);
       resultSelector.textContent = result;
       inputOne = result;
+      inputOneBool = false;
       inputTwo = "";
       operation = "";
       operationBool = false;
