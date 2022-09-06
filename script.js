@@ -11,7 +11,7 @@ function multiply(firstInput, secondInput) {
 }
 
 function divide(firstInput, secondInput) {
-  if (secondInput == 0) return null;
+  if (secondInput == 0) return NaN;
   else return firstInput / secondInput;
 }
 
@@ -93,6 +93,14 @@ numberButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     resultSelector.textContent += wordToNumber(button.className);
     if (inputOneBool == false) {
+      if (button.className === "sign") {
+        if (resultSelector.textContent != "") {
+          resultSelector.textContent =
+            parseInt(resultSelector.textContent) * -1;
+          inputOne = resultSelector.textContent;
+        }
+        return;
+      }
       inputOne = resultSelector.textContent;
     } else {
       inputTwo = resultSelector.textContent;
@@ -116,6 +124,8 @@ operationButtons.forEach((button) => {
     } else if (button.className === "equal") {
       result = operate(operation, inputOne, inputTwo);
       resultSelector.textContent = result;
+      inputTwo = "";
+      operation = "";
     } else if (button.className === "all-clear") {
       inputOne = "";
       inputTwo = "";
