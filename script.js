@@ -103,6 +103,18 @@ numberButtons.forEach((button) => {
       }
       inputOne = resultSelector.textContent;
     } else {
+      if (button.className === "sign") {
+        if (resultSelector.textContent != "") {
+          resultSelector.textContent =
+            parseInt(resultSelector.textContent) * -1;
+          if (inputOneBool === false) {
+            inputOne = resultSelector.textContent;
+          } else {
+            inputTwo = resultSelector.textContent;
+          }
+        }
+        return;
+      }
       inputTwo = resultSelector.textContent;
     }
   });
