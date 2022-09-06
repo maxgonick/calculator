@@ -1,24 +1,24 @@
-function add(firstInput, secondInput) {
-  return firstInput + secondInput;
+function plus(firstInput, secondInput) {
+  return parseInt(firstInput) + parseInt(secondInput);
 }
 
 function minus(firstInput, secondInput) {
-  return firstInput - secondInput;
+  return parseInt(firstInput) - parseInt(secondInput);
 }
 
 function multiply(firstInput, secondInput) {
-  return firstInput * secondInput;
+  return parseInt(firstInput) * parseInt(secondInput);
 }
 
 function divide(firstInput, secondInput) {
   if (secondInput == 0) return NaN;
-  else return firstInput / secondInput;
+  else return parseInt(firstInput) / parseInt(secondInput);
 }
 
 function operate(functionInput, firstInput, secondInput) {
   switch (functionInput) {
-    case "add":
-      return add(firstInput, secondInput);
+    case "plus":
+      return plus(firstInput, secondInput);
     case "minus":
       return minus(firstInput, secondInput);
     case "multiply":
@@ -124,8 +124,10 @@ operationButtons.forEach((button) => {
     } else if (button.className === "equal") {
       result = operate(operation, inputOne, inputTwo);
       resultSelector.textContent = result;
+      inputOne = result;
       inputTwo = "";
       operation = "";
+      operationBool = false;
     } else if (button.className === "all-clear") {
       inputOne = "";
       inputTwo = "";
